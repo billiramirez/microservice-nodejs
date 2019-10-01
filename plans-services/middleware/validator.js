@@ -1,17 +1,11 @@
 const Joi = require('@hapi/joi');
-const Subscription = require("../models/subscription");
 const Plan = require("../models/plan");
-const ValidationError = require("../errors/errors").ValidationError;
+const ValidationError = require("../../errors/errors").ValidationError;
 
 
 "use strict"
 
 let validators = {
-  "Subscription": {
-    scopes: {
-      default: Subscription.SubscriptionValidationSchema
-    }
-  },
   "Plan": Plan.PlanValidationSchema
 }
 
