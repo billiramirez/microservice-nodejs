@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sub-db": "docker run --name subscription-as-a-service -e MYSQL_ROOT_PASSWORD=123456789 -p 6606:3306 -d mysql:5.7"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "helmet": "^3.21.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "sequelize": "^5.19.2"
   }
 }
