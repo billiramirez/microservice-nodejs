@@ -13,7 +13,7 @@ module.exports = {
     database: process.env.MYSQL_DB,
     host: process.env.MYSQL_HOST,
     dialect: "mysql",
-    operatorsAliases: false
+    port: process.env.MYSQL_PORT
   }
 
 // module.exports = {

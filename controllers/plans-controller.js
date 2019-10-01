@@ -7,14 +7,13 @@ const plansService = new PlansService();
 //   api/plans
 
 router.get("/", asyncWrapper(async (req, res) => {
-  let userId = null;
+  let userId = 1;
   let plans = await plansService.findAll(userId);
   res.send(plans);
 }));
 
 router.get("/:id", asyncWrapper(async (req, res) => {
   let id = req.params.id;
-  let userId = null;
   let plan = await plansService.findOne(id);
   res.send(plan);
 }));
