@@ -1,3 +1,7 @@
+const AMQP_CONNECTION_STRING = "amqp://gydxisnw:rEPye9zbBP-xa7iU_7nttoX1eQcvupV9@baboon.rmq.cloudamqp.com/gydxisnw"
+const AMQP_CHANNEL_NAME = "PAYMENTS_GATEWAY";
+const AMQP_QUEUE_NAME = "PAYMENTS_QUEUE";
+
 module.exports = {
   apps: [
     {
@@ -29,9 +33,25 @@ module.exports = {
         MYSQL_PORT: 3308,
         MYSQL_DB: "SubscriptionsDb",
         PORT: 3002,
+        AMQP_CONNECTION_STRING,
+        AMQP_CHANNEL_NAME,
+        AMQP_QUEUE_NAME
       },
       env_production: {
         NODE_ENV: "development",
+      }
+    },
+    {
+      name: "payments-service",
+      script: "./payments-service/index.js",
+      watch: true,
+      env: {
+        AMQP_CONNECTION_STRING,
+        AMQP_CHANNEL_NAME,
+        AMQP_QUEUE_NAME
+      },
+      env_production: {
+
       }
     }
   ]
