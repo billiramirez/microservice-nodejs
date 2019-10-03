@@ -2,10 +2,12 @@ const router = require('express').Router();
 const asyncWrapper = require('../../utilities/async-wrapper').AsyncWrapper;
 const SubscriptionService = require("../services/subscriptions-service");
 const validator = require("../middleware/validator");
+const protectedRoute = require("../middleware/protected-route");
 //   api/subscriptions
 
 const subscriptionService = new SubscriptionService();
 
+router.use(protectedRoute());
 router.get("/", asyncWrapper(async (req, res) => {
   let userId = 1;
   let subscriptions = await subscriptionService.findAll(userId);
