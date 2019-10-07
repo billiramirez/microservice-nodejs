@@ -16,8 +16,8 @@ module.exports = class PlansService {
       return plans;
     }else {
       let plans = await Plan.findAll({ where: { userId }});
-      // store to the cache;
       await this.cachingService.purgeCache(userId);
+      await this.cachingService.storePlans(userId, plans);
       return plans;
     }
   }
@@ -27,10 +27,18 @@ module.exports = class PlansService {
   }
 
   async create(plan){
+    await  this.cachingService.purgeCache(plan.userId);
     return await Plan.create(plan);
   }
 
   async deleteOne(id){
-    return await Plan.destroy({ where: {id}})
+    let plan = await this.findOne(id);
+    if(plan) {
+      await this.cachingService.purgeCache(plan.userId);
+      return await Plan.destroy({where: {id}})
+    }
+    else {
+      return Promise.resolve();
+    }
   }
 }

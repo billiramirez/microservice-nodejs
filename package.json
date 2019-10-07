@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-plans": "docker run --name plans-db -e MYSQL_ROOT_PASSWORD=123456789 -p 3307:3306 -d mysql:5.7",
     "db-subscriptions": "docker run --name subscriptions-db -e MYSQL_ROOT_PASSWORD=123456789 -p 3308:3306 -d mysql:5.7",
-    "db-auth": "docker run --name auth-db -e MYSQL_ROOT_PASSWORD=123456789 -p 3309:3306 -d mysql:5.7"
+    "db-auth": "docker run --name auth-db -e MYSQL_ROOT_PASSWORD=123456789 -p 3309:3306 -d mysql:5.7",
+    "db-cache": "docker run --name plans-cache -p 6380:6379 -d redis"
 
 
   },
