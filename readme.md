@@ -18,3 +18,4 @@ This is a microservices app using the following technologies:
 * AMQP Protocol
   * CloudAMQP
 * Express Gateway
+* PM2
